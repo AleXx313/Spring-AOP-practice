@@ -1,16 +1,18 @@
 package ru.mironov.springaop.service;
 
+import ru.mironov.springaop.dto.TimeTrackAggregationData;
 import ru.mironov.springaop.dto.TimeTrackDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface TimeTrackService {
 
     void save(TimeTrackDto dto);
 
-    Integer getAverageTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
+    List<TimeTrackAggregationData> getAverageTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
 
-    Long getTotalTimeTracked(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
+    List<TimeTrackAggregationData> getTotalTimeTracked(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd);
 
-    Integer getMaxTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
+    List<TimeTrackAggregationData> getMaxTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
 }

@@ -2,6 +2,7 @@ package ru.mironov.springaop.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.mironov.springaop.dto.TimeTrackAggregationData;
 import ru.mironov.springaop.dto.TimeTrackDto;
 import ru.mironov.springaop.mapper.TimeTrackMapper;
 import ru.mironov.springaop.model.TimeTrack;
@@ -9,6 +10,7 @@ import ru.mironov.springaop.repository.TimeTrackRepository;
 import ru.mironov.springaop.util.Constants;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class DefaultTimeTrackService implements TimeTrackService {
     }
 
     @Override
-    public Integer getAverageTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd){
+    public List<TimeTrackAggregationData> getAverageTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd){
         if (rangeStart == null) {
             rangeStart = Constants.MIN_DATE;
         }
@@ -43,7 +45,7 @@ public class DefaultTimeTrackService implements TimeTrackService {
     }
 
     @Override
-    public Long getTotalTimeTracked(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd) {
+    public List<TimeTrackAggregationData> getTotalTimeTracked(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd) {
         if (rangeStart == null) {
             rangeStart = Constants.MIN_DATE;
         }
@@ -62,7 +64,7 @@ public class DefaultTimeTrackService implements TimeTrackService {
     }
 
     @Override
-    public Integer getMaxTimeTrack(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd) {
+    public List<TimeTrackAggregationData> getMaxTimeTrack(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd) {
         if (rangeStart == null) {
             rangeStart = Constants.MIN_DATE;
         }
