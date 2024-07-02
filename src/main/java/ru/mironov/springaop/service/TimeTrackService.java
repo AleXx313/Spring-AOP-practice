@@ -10,9 +10,9 @@ public interface TimeTrackService {
 
     void save(TimeTrackDto dto);
 
-    List<TimeTrackAggregationData> getAverageTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
+    List<TimeTrackAggregationData> getAverageTimeTrack(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd);
 
     List<TimeTrackAggregationData> getTotalTimeTracked(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd);
 
-    List<TimeTrackAggregationData> getMaxTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd);
+    List<TimeTrackAggregationData> getMaxTimeTrack(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd);
 }

@@ -1,6 +1,7 @@
 package ru.mironov.springaop.aspect;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,6 +17,7 @@ import java.util.concurrent.CompletableFuture;
 @Aspect
 @Component
 @Slf4j
+@Setter
 @RequiredArgsConstructor
 public class TrackAsyncTimeAspect {
 
