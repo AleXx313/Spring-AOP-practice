@@ -1,6 +1,6 @@
 package ru.mironov.springaop.aspect;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -13,10 +13,10 @@ import ru.mironov.springaop.service.TimeTrackService;
 @Aspect
 @Component
 @Slf4j
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TrackTimeAspect {
 
-    private TimeTrackService timeTrackService;
+    private final TimeTrackService timeTrackService;
 
     @Pointcut("@annotation(ru.mironov.springaop.annotation.TrackTime)")
     public void trackTimeAnnotatedMethod() {

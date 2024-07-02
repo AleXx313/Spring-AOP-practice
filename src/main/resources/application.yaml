@@ -4,6 +4,7 @@ spring:
       mode: always
   application:
     name: springaop
+    activate-tracker: true
   datasource:
     url: jdbc:postgresql://localhost:5432/springaop
     username: postgres
