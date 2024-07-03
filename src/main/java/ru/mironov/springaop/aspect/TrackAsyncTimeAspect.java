@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.mironov.springaop.dto.TimeTrackDto;
+import ru.mironov.springaop.exception.JoinPointProceedException;
 import ru.mironov.springaop.service.TimeTrackService;
 
 import java.util.concurrent.CompletableFuture;
@@ -39,7 +40,7 @@ public class TrackAsyncTimeAspect {
                     return joinPoint.proceed();
                 } catch (Throwable e) {
                     log.error("Ошибка при выполнении метода {}", joinPoint.getSignature().toLongString());
-                    throw new RuntimeException();
+                    throw new JoinPointProceedException(e.getMessage());
                 } finally {
                     long time = System.nanoTime() - start;
                     String className = joinPoint.getSignature().getDeclaringType().getSimpleName();

@@ -23,8 +23,8 @@
 - Максимальное время выполнения метода
 - Среднее время выполнения метода
 
-Подробная документация доступна по ссылке: http://localhost:8080/swagger-ui/index.html
-OAS доступна по адресу: http://localhost:8080/v3/api-docs
+Подробная документация доступна по ссылке: http://localhost:8080/swagger-ui/index.html <br>
+OAS доступна по ссылке: http://localhost:8080/v3/api-docs
 
 ### Запуск
 
