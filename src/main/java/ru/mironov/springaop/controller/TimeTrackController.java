@@ -1,6 +1,5 @@
 package ru.mironov.springaop.controller;
 
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,8 +20,8 @@ import java.util.List;
 @RequestMapping("time-track")
 @RequiredArgsConstructor
 @Tag(
-        name="Контроллер для сбора статистики",
-        description="Контроллер для сбора статистики времени выполнения методов приложения аннотированных аннотацией TrackAsyncTime")
+        name = "Контроллер для сбора статистики",
+        description = "Контроллер для сбора статистики времени выполнения методов приложения аннотированных аннотацией TrackAsyncTime")
 public class TimeTrackController {
 
     private final TimeTrackService timeTrackService;
@@ -43,6 +42,7 @@ public class TimeTrackController {
             @Parameter(description = "Конец отрезка") LocalDateTime rangeEnd) {
         return timeTrackService.getTotalTimeTracked(className, methodName, rangeStart, rangeEnd);
     }
+
     @Operation(
             summary = "Среднее время выполнения",
             description = "Позволяет получить данные о среднем времени выполнения метода"

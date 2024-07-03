@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class TrackAsyncTimeAspectTest {
+class TrackTimeAspectTest {
 
     @Mock
     private TimeTrackService timeTrackService;
@@ -23,16 +23,16 @@ class TrackAsyncTimeAspectTest {
     private ProceedingJoinPoint joinPoint;
 
     @InjectMocks
-    private TrackAsyncTimeAspect trackAsyncTimeAspect;
+    private TrackTimeAspect trackTimeAspect;
 
     private Signature signature;
 
     @Test
     void aroundAnyTrackAsyncTimeAnnotatedMethod_whenTrackerActive_thenTimeTrackSaved() throws Throwable {
-        trackAsyncTimeAspect.setTimeTrackerActive(true);
+        trackTimeAspect.setTimeTrackerActive(true);
         when(joinPoint.getSignature()).thenReturn(signature);
         when(joinPoint.proceed()).thenReturn(null);
-        trackAsyncTimeAspect.aroundAnyTrackAsyncTimeAnnotatedMethod(joinPoint);
+        trackTimeAspect.aroundAnyTrackAsyncTimeAnnotatedMethod(joinPoint);
 
         verify(joinPoint, times(1)).proceed();
         verify(timeTrackService, times(1)).save(any(TimeTrackDto.class));
@@ -41,7 +41,7 @@ class TrackAsyncTimeAspectTest {
     @Test
     void aroundAnyTrackAsyncTimeAnnotatedMethod_whenTrackerNotActive_thenTimeTrackNotSaved() throws Throwable {
         when(joinPoint.proceed()).thenReturn(null);
-        trackAsyncTimeAspect.aroundAnyTrackAsyncTimeAnnotatedMethod(joinPoint);
+        trackTimeAspect.aroundAnyTrackAsyncTimeAnnotatedMethod(joinPoint);
 
         verify(joinPoint, times(1)).proceed();
         verify(timeTrackService, never()).save(any());
@@ -81,6 +81,4 @@ class TrackAsyncTimeAspectTest {
             }
         };
     }
-
-
 }

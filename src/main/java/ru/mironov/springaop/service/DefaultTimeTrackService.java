@@ -26,18 +26,18 @@ public class DefaultTimeTrackService implements TimeTrackService {
     }
 
     @Override
-    public List<TimeTrackAggregationData> getAverageTimeTrack(String className, String methodName,  LocalDateTime rangeStart, LocalDateTime rangeEnd){
+    public List<TimeTrackAggregationData> getAverageTimeTrack(String className, String methodName, LocalDateTime rangeStart, LocalDateTime rangeEnd) {
         if (rangeStart == null) {
             rangeStart = Constants.MIN_DATE;
         }
         if (rangeEnd == null) {
             rangeEnd = LocalDateTime.now();
         }
-        if (className.isBlank() && methodName.isBlank()){
+        if (className.isBlank() && methodName.isBlank()) {
             return timeTrackRepository.getAverage(rangeStart, rangeEnd);
-        } else if (className.isBlank()){
+        } else if (className.isBlank()) {
             return timeTrackRepository.getAverageByMethodName(methodName, rangeStart, rangeEnd);
-        } else if (methodName.isBlank()){
+        } else if (methodName.isBlank()) {
             return timeTrackRepository.getAverageByClassName(className, rangeStart, rangeEnd);
         } else {
             return timeTrackRepository.getAverageByClassNameAndMethodName(className, methodName, rangeStart, rangeEnd);
@@ -52,11 +52,11 @@ public class DefaultTimeTrackService implements TimeTrackService {
         if (rangeEnd == null) {
             rangeEnd = LocalDateTime.now();
         }
-        if (className.isBlank() && methodName.isBlank()){
+        if (className.isBlank() && methodName.isBlank()) {
             return timeTrackRepository.getSum(rangeStart, rangeEnd);
-        } else if (className.isBlank()){
+        } else if (className.isBlank()) {
             return timeTrackRepository.getSumByMethodName(methodName, rangeStart, rangeEnd);
-        } else if (methodName.isBlank()){
+        } else if (methodName.isBlank()) {
             return timeTrackRepository.getSumByClassName(className, rangeStart, rangeEnd);
         } else {
             return timeTrackRepository.getSumByClassNameAndMethodName(className, methodName, rangeStart, rangeEnd);
@@ -71,11 +71,11 @@ public class DefaultTimeTrackService implements TimeTrackService {
         if (rangeEnd == null) {
             rangeEnd = LocalDateTime.now();
         }
-        if (className.isBlank() && methodName.isBlank()){
+        if (className.isBlank() && methodName.isBlank()) {
             return timeTrackRepository.getMax(rangeStart, rangeEnd);
-        } else if (className.isBlank()){
+        } else if (className.isBlank()) {
             return timeTrackRepository.getMaxByMethodName(methodName, rangeStart, rangeEnd);
-        } else if (methodName.isBlank()){
+        } else if (methodName.isBlank()) {
             return timeTrackRepository.getMaxByClassName(className, rangeStart, rangeEnd);
         } else {
             return timeTrackRepository.getMaxByClassNameAndMethodName(className, methodName, rangeStart, rangeEnd);
